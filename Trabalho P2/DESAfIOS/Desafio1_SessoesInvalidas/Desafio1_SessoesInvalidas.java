@@ -1,16 +1,11 @@
-import java.io.BufferedReader;
+import  java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-
 public class Desafio1_SessoesInvalidas {
 
-    /**
-     * Encontra todas as sessões inválidas no arquivo de log.
-     * 
-     * CORREÇÃO: LOGIN aninhado marca a NOVA sessão (sessionId).
-     * 
+     /**
      * @param caminhoArquivo Caminho para o arquivo CSV de logs
      * @return Set contendo os SESSION_ID inválidos (nunca null)
      * @throws IOException Se houver erro ao ler o arquivo
@@ -131,3 +126,8 @@ public class Desafio1_SessoesInvalidas {
         }
     }
 }
+
+
+
+
+
