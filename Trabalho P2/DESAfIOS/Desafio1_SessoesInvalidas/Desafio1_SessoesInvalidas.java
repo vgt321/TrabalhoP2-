@@ -78,7 +78,8 @@ public class Desafio1_SessoesInvalidas {
     
     public static void main(String[] args) {
         Desafio1_SessoesInvalidas desafio = new Desafio1_SessoesInvalidas();
-        String arquivo = "forensic_logs_teste.csv";
+        String arquivo = "C:\\Users\\mards\\Documents\\GitHub\\TrabalhoP2-\\Trabalho P2\\DESAfIOS\\Desafio1_SessoesInvalidas\\forensic_logs_teste.csv";
+
 
         System.out.println("=========================================================");
         System.out.println("=       DESAFIO 1: SESSOES INVALIDAS (CORRIGIDO)       =");

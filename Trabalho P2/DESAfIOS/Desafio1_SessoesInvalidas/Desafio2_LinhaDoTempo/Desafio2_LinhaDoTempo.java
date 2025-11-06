@@ -71,7 +71,7 @@ public class Desafio2_LinhaDoTempo {
     // ════════s═══════════════════════════════════════════════════════
     public static void main(String[] args) {
         Desafio2_LinhaDoTempo desafio = new Desafio2_LinhaDoTempo();
-        String arquivo = "forensic_logs_teste.csv";
+        String arquivo = "C:\\Users\\mards\\Documents\\GitHub\\TrabalhoP2-\\Trabalho P2\\DESAfIOS\\Desafio1_SessoesInvalidas\\forensic_logs_teste.csv";
         String sessao = "session-delta-404";
 
         System.out.println("===========================================================");
