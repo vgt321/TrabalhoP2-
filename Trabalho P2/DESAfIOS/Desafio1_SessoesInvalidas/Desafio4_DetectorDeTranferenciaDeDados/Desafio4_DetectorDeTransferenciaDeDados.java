@@ -87,5 +87,81 @@ public class Desafio4_PicosTransferencia {
             }
             return picosEncontrados;
         }
+        //  ============================================================
+        //  MÉTODO DE TESTE
+        //  ============================================================
+
+        public static void main(String[] args) {
+            Desafio4_PicosTransferencia meuDesafio = new Desafio4_PicosTransferencia();
+            String caminhoDoArquivo = "C:\\Users\\mards\\Documents\\GitHub\\TrabalhoP2-\\Trabalho P2\\DESAfIOS\\Desafio1_SessoesInvalidas\\forensic_logs_teste.csv";
+            System.out.println("================================================================");
+            System.out.println("              DESAFIO 4: PICOS DE TRANSFERÊRENCIA               ");
+            System.out.println("================================================================");
+
+            try {
+                long tempoInicio = System.nanoTime();
+                Map<Long, Long> resultadoDoPicos = meuDesafio.identificarPicosTransferencia(caminhoArquivo);
+                long tempoFim = System.nanoTime();
+                long tempoDecorrido = tempoFim - tempoInicio;
+                double tempoEmMilissegundos = tempoDecorrido / 1_000_000.0;
+
+
+                System.out.println("Arquivo: " + caminhoDoArquivo);
+                // printf permite formatar números (%.3f = 3 casas decimais)
+                System.out.printf("Tempo: %.3f ms%n", tempoEmMilissegundos);
+                System.out.println("Total de picos encontrados: " + resultadoDoPicos.size());
+                System.out.println("===========================================================\n");
+
+
+
+                if (resultadoDoPicos.isEmpty()) {
+
+                    System.out.println("Nenhum pico detectado!");
+                } else {
+
+                    System.out.println("Picos identificados:");
+                    System.out.println("(Timestamp Atual → Próximo Maior)");
+                    System.out.println("-----------------------------------------------------------");
+
+                    List<Map.Entry<Long, Long>> listaDePicos = new ArrayList<>(resultadoDoPicos.entrySet());
+                    listaDePicos.sort(Map.Entry.comparingByKey());
+
+                    int numeroDoPico = 1;
+
+
+                    for (Map.Entry<Long, Long> umPico : listaDePicos) {
+                        long timeAtual = umPico.getKey();
+                        long timeMaior = umPico.getValue();
+
+
+                        System.out.printf("%3d. %d → %d%n", numeroDoPico, timeAtual, timeMaior);
+
+                        numeroDoPico++;
+
+
+                        if (numeroDoPico > 10) {
+                            int picosRestantes = resultadoDoPicos.size() - 10;
+                            System.out.println("... (e mais " + picosRestantes + " picos)");
+                            break;
+                        }
+                    }
+                }
+
+
+                System.out.println("\n===========================================================");
+                System.out.println("EXPLICAÇÃO:");
+                System.out.println("Cada linha mostra: Momento X → Momento Y");
+                System.out.println("Isso significa que no Momento X teve uma transferência menor,");
+                System.out.println("mas no Momento Y teve uma transferência MAIOR.");
+                System.out.println("Isso pode indicar roubo de dados!");
+                System.out.println("===========================================================");
+
+            } catch (IOException erro) {
+                System.err.println("ERRO ao ler arquivo:");
+                System.err.println(erro.getMessage());
+                
+            }
+        }
+
     }
 }
