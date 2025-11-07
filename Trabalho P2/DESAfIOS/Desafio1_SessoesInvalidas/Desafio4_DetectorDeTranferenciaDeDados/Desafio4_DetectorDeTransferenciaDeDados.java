@@ -70,5 +70,22 @@ public class Desafio4_PicosTransferencia {
         int totalDeEventos = listaDeTimes.size() == 0) {
             return picosEncontrados;
         }
+        Stack<Integer> pilhaDeIndice = new Stack<>();
+        int totalDeEventos = listaDeTimes.size();
+        for (int i = totalDeEventos - 1; i >= 0; i--) {
+            long bytesDoEventoAtual = listaDeBytes.get(i);
+            while (!pilhaDeIndice.isEmpty()){
+                int indiceDoTopo = pilhaDeIndice.peek();
+                long bytesDoTopo = listaDeBytes.get(indiceDoTopo);
+                if (!pilhaDeIndice.isEmpty()){
+                    int indiceMaior = pilhaDeIndice.peek();
+                    long timeAtual = listaDeTimes.get(i);
+                    long timeMaior = listaDeTimes.get(indiceMaior);
+                    picosEncontrados.put(timeAtual, timeMaior);
+                }
+                pilhasDeIndices.push(i);
+            }
+            return picosEncontrados;
+        }
     }
 }
